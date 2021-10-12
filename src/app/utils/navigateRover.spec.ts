@@ -5,58 +5,34 @@ type FunctionParameters = Parameters<typeof navigateRover>
 
 describe('util: navigateRover', () => {
   it('should navigate the rover in a single direction', () => {
-    const inputsMoveUp: FunctionParameters = [
-      {
-        position: { x: 5, y: 5, d: 'N' },
-        instructions: 'MMM',
-      },
-      11,
-      11,
-    ]
-
-    const inputsMoveDown: FunctionParameters = [
-      {
-        position: { x: 5, y: 5, d: 'S' },
-        instructions: 'MMM',
-      },
-      11,
-      11,
-    ]
-
-    const inputsMoveLeft: FunctionParameters = [
-      {
-        position: { x: 5, y: 5, d: 'W' },
-        instructions: 'MMM',
-      },
-      11,
-      11,
-    ]
-
-    const inputsMoveRight: FunctionParameters = [
-      {
-        position: { x: 5, y: 5, d: 'E' },
-        instructions: 'MMM',
-      },
-      11,
-      11,
-    ]
-
-    expect(navigateRover(...inputsMoveUp)).toEqual({
+    expect(navigateRover({
+      position: { x: 5, y: 5, d: 'N' },
+      instructions: 'MMM',
+    })).toEqual({
       position: { x: 5, y: 8, d: 'N'},
       instructions: 'MMM'
     })
 
-    expect(navigateRover(...inputsMoveDown)).toEqual({
+    expect(navigateRover({
+      position: { x: 5, y: 5, d: 'S' },
+      instructions: 'MMM',
+    })).toEqual({
       position: { x: 5, y: 2, d: 'S'},
       instructions: 'MMM'
     })
 
-    expect(navigateRover(...inputsMoveLeft)).toEqual({
+    expect(navigateRover({
+      position: { x: 5, y: 5, d: 'W' },
+      instructions: 'MMM',
+    })).toEqual({
       position: { x: 2, y: 5, d: 'W'},
       instructions: 'MMM'
     })
 
-    expect(navigateRover(...inputsMoveRight)).toEqual({
+    expect(navigateRover({
+      position: { x: 5, y: 5, d: 'E' },
+      instructions: 'MMM',
+    })).toEqual({
       position: { x: 8, y: 5, d: 'E'},
       instructions: 'MMM'
     })
@@ -67,28 +43,23 @@ describe('util: navigateRover', () => {
       position: { x: 5, y: 5, d: 'N' },
       instructions: 'L',
     }
-    const inputs: FunctionParameters = [
-      rover,
-      11, 
-      11,
-    ]
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'W' },
       instructions: 'L',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'S' },
       instructions: 'L',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'E' },
       instructions: 'L',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'N' },
       instructions: 'L',
     })
@@ -99,28 +70,23 @@ describe('util: navigateRover', () => {
       position: { x: 5, y: 5, d: 'N' },
       instructions: 'R',
     }
-    const inputs: FunctionParameters = [
-      rover,
-      11, 
-      11,
-    ]
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'E' },
       instructions: 'R',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'S' },
       instructions: 'R',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'W' },
       instructions: 'R',
     })
 
-    expect(navigateRover(...inputs)).toEqual({
+    expect(navigateRover(rover)).toEqual({
       position: { x: 5, y: 5, d: 'N' },
       instructions: 'R',
     })
@@ -132,7 +98,7 @@ describe('util: navigateRover', () => {
       instructions: 'LMLMLMLMM'
     }
 
-    expect(navigateRover(rover1, 10, 10)).toEqual({
+    expect(navigateRover(rover1)).toEqual({
       position: { x: 1, y: 3, d: 'N' },
       instructions: 'LMLMLMLMM',
     })
@@ -142,7 +108,7 @@ describe('util: navigateRover', () => {
       instructions: 'MMRMMRMRRM'
     }
 
-    expect(navigateRover(rover2, 10, 10)).toEqual({
+    expect(navigateRover(rover2)).toEqual({
       position: { x: 5, y: 1, d: 'E' },
       instructions: 'MMRMMRMRRM',
     })

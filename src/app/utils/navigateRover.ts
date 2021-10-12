@@ -1,5 +1,10 @@
 import { Rover, RoverDirection } from 'src/typings'
 
+type AdditionalOptions = {
+  width?: number,
+  height?: number,
+}
+
 const dirs = {
   N: { x: 0, y: 1 },
   S: { x: 0, y: -1 },
@@ -15,7 +20,10 @@ const getNextDirection = (current: RoverDirection, turn: 'L' | 'R'): RoverDirect
   return directions[newIndex] as RoverDirection
 }
 
-const navigateRover = (rover: Rover, width: number, height: number): Rover => {
+const navigateRover = (
+  rover: Rover, 
+  options: AdditionalOptions = {},
+  ): Rover => {
   for (const instruction of rover.instructions) {
     if (instruction === 'M') {
       const change = dirs[rover.position.d]
