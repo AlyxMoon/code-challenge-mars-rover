@@ -1,0 +1,18 @@
+<section class="rover-grid-wrapper">
+  <dl>
+    <dt>Width</dt>
+    <dd>{{ width }}</dd>
+
+    <dt>Height</dt>
+    <dd>{{ height }}</dd>
+  </dl>
+
+  <div 
+    class="rover-grid"
+    [ngStyle]="{ '--cellsPerRow': 20 }"
+  >
+    <div *ngFor="let cell of cells">
+      {{ cell }}
+    </div>
+  </div>
+</section>

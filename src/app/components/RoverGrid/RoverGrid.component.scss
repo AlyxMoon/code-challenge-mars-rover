@@ -1,0 +1,39 @@
+dl {
+  display: grid;
+  justify-content: flex-start;
+  grid-template-columns: auto auto;
+  gap: 0.5em 1em;
+
+  dt {
+    font-weight: bold;
+  }
+
+  dd {
+    margin: 0;
+  }
+}
+
+.rover-grid {
+  --cellSize: 30px;
+
+  width: fit-content;
+  margin: auto;
+
+  display: grid;
+  grid-template-columns: repeat(var(--cellsPerRow), var(--cellSize));
+  grid-auto-rows: var(--cellSize);
+  gap: 1px;
+
+  background-color: black;
+  border: 1px solid black;
+
+  & > div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background-color: white;
+
+    user-select: none;
+  }
+}

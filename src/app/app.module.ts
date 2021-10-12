@@ -2,13 +2,15 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
+import { RoverGridComponent } from './components/RoverGrid/RoverGrid.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    RoverGridComponent,
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
   ],
   providers: [],
   bootstrap: [AppComponent]
