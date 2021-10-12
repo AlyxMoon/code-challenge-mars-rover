@@ -1,7 +1,5 @@
 import { Rover } from 'src/typings'
-import navigateRover from './navigateRover'
-
-type FunctionParameters = Parameters<typeof navigateRover>
+import navigateRover, { AdditionalOptions } from './navigateRover'
 
 describe('util: navigateRover', () => {
   it('should navigate the rover in a single direction', () => {
@@ -111,6 +109,54 @@ describe('util: navigateRover', () => {
     expect(navigateRover(rover2)).toEqual({
       position: { x: 5, y: 1, d: 'E' },
       instructions: 'MMRMMRMRRM',
+    })
+  })
+
+  it('if argument is set, throw error if rover goes out of bounds', () => {
+    const options: AdditionalOptions = { width: 10, height: 20, allowGoingOffMap: false }
+
+    const roverUp: Rover = {
+      position: { x: 1, y: 17, d: 'N' },
+      instructions: 'MMMM',
+    }
+
+    expect(() => navigateRover(roverUp, options)).toThrow()
+    expect(roverUp).toEqual({
+      position: { x: 1, y: 20, d: 'N' },
+      instructions: 'MMMM',
+    })
+
+    const roverDown: Rover = {
+      position: { x: 1, y: 2, d: 'S' },
+      instructions: 'MMMM',
+    }
+
+    expect(() => navigateRover(roverDown, options)).toThrow()
+    expect(roverDown).toEqual({
+      position: { x: 1, y: -1, d: 'S' },
+      instructions: 'MMMM',
+    })
+
+    const roverLeft: Rover = {
+      position: { x: 4, y: 17, d: 'W' },
+      instructions: 'MMMMM',
+    }
+
+    expect(() => navigateRover(roverLeft, options)).toThrow()
+    expect(roverLeft).toEqual({
+      position: { x: -1, y: 17, d: 'W' },
+      instructions: 'MMMMM',
+    })
+
+    const roverRight: Rover = {
+      position: { x: 9, y: 5, d: 'E' },
+      instructions: 'MM',
+    }
+
+    expect(() => navigateRover(roverRight, options)).toThrow()
+    expect(roverRight).toEqual({
+      position: { x: 10, y: 5, d: 'E' },
+      instructions: 'MM',
     })
   })
 })

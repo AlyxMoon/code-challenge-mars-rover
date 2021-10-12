@@ -1,8 +1,9 @@
 import { Rover, RoverDirection } from 'src/typings'
 
-type AdditionalOptions = {
+export type AdditionalOptions = {
   width?: number,
   height?: number,
+  allowGoingOffMap?: boolean,
 }
 
 const dirs = {
@@ -22,13 +23,28 @@ const getNextDirection = (current: RoverDirection, turn: 'L' | 'R'): RoverDirect
 
 const navigateRover = (
   rover: Rover, 
-  options: AdditionalOptions = {},
+  {
+    allowGoingOffMap = true,
+    width = Infinity,
+    height = Infinity,
+  }: AdditionalOptions = {},
   ): Rover => {
   for (const instruction of rover.instructions) {
     if (instruction === 'M') {
       const change = dirs[rover.position.d]
       rover.position.x += change.x
       rover.position.y += change.y
+
+      if (!allowGoingOffMap) {
+        if (
+          rover.position.x < 0 || 
+          rover.position.y < 0 ||
+          rover.position.x >= width ||
+          rover.position.y >= height
+        ) {
+          throw new Error('The rover has gone out of bounds!')
+        }
+      }
     } else if (instruction === 'L' || instruction === 'R') {
       rover.position.d = getNextDirection(rover.position.d, instruction)
     }
