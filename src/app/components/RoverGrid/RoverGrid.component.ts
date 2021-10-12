@@ -29,7 +29,7 @@ export class RoverGridComponent {
     return ((height - y - 1) * width) + x
   }
 
-  get roverStyles (): { transform: string } {
+  get roverStyles (): { [key: string]: string } {
     if (!this.rover) return { transform: 'none' }
 
     let rotation = 0
@@ -38,7 +38,11 @@ export class RoverGridComponent {
     if (this.rover.position.d === 'W') rotation = 180
     if (this.rover.position.d === 'E') rotation = 0
 
-    return { transform: `rotateZ(${rotation}deg)` }
+    return { 
+      transform: `rotateZ(${rotation}deg)`,
+      top: `calc((var(--cellSize) + 1px) * ${this.height - this.rover.position.y})`,
+      left: `calc((var(--cellSize) + 1px) * ${this.rover.position.x})`,
+    }
   }
 
   @HostBinding('attr.style')

@@ -14,12 +14,20 @@ export class AppComponent {
   height = 20
   rover: Rover = {
     position: { x: 10, y: 0, d: 'N' },
-    instructions: 'MM',
+    instructions: 'MMLMMMMMMRMMMMM',
   }
 
   async operateRover (): Promise<void> {
-    await waitFor(1000)
-    navigateRover(this.rover)
+
+    for (const char of this.rover.instructions) {
+      navigateRover({
+        position: this.rover.position,
+        instructions: char,
+      })
+
+      await waitFor()
+    }
+
   }
 
   constructor () {

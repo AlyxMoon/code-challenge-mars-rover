@@ -16,6 +16,7 @@ dl {
 .rover-grid {
   --cellSize: 30px;
 
+  position: relative;
   width: fit-content;
   margin: auto;
 
@@ -36,9 +37,18 @@ dl {
 
     user-select: none;
   }
-}
 
-.rover {
-  font-size: 2em;
-  font-weight: bold;
+  .rover {
+    position: absolute;
+  
+    height: var(--cellSize);
+    width: var(--cellSize);
+  
+    background: transparent;
+  
+    font-size: 2em;
+    font-weight: bold;
+  
+    transition: top 0.9s, left 0.9s;
+  }
 }
