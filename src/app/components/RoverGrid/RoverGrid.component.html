@@ -11,8 +11,10 @@
     class="rover-grid"
     [ngStyle]="{ '--cellsPerRow': 20 }"
   >
-    <div *ngFor="let cell of cells">
-      {{ cell }}
+    <div *ngFor="let cell of cells; index as i">
+      <div *ngIf="i === roverPositionIndex">
+        <div class="rover" [ngStyle]="roverStyles">&gt;</div>
+      </div>
     </div>
   </div>
 </section>
