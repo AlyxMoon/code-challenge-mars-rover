@@ -1,6 +1,6 @@
 import { Component, HostBinding, Input } from '@angular/core'
 import { DomSanitizer } from '@angular/platform-browser'
-import { RoverPosition } from 'src/typings'
+import { Rover } from 'src/typings'
 
 @Component({
   selector: 'RoverGrid',
@@ -10,7 +10,7 @@ import { RoverPosition } from 'src/typings'
 export class RoverGridComponent {
   @Input() width = 10
   @Input() height = 10
-  @Input() rover: RoverPosition = { x: 0, y: 0, d: 'N' }
+  @Input() rover!: Rover
 
   get cells (): number[] {
     const cells = Array(this.width * this.height).fill(0)
@@ -18,22 +18,25 @@ export class RoverGridComponent {
   }
 
   get roverPositionIndex (): number {
+    if (!this.rover) return -1
     // normally a grid would go top->bottom and left->right
     // but we need bottom->top and left->right
     // so a bit of translation is required
 
     const { width, height } = this
-    const { x, y } = this.rover
+    const { x, y } = this.rover.position
 
     return ((height - y - 1) * width) + x
   }
 
   get roverStyles (): { transform: string } {
+    if (!this.rover) return { transform: 'none' }
+
     let rotation = 0
-    if (this.rover.d === 'N') rotation = -90
-    if (this.rover.d === 'S') rotation = 90
-    if (this.rover.d === 'W') rotation = 180
-    if (this.rover.d === 'E') rotation = 0
+    if (this.rover.position.d === 'N') rotation = -90
+    if (this.rover.position.d === 'S') rotation = 90
+    if (this.rover.position.d === 'W') rotation = 180
+    if (this.rover.position.d === 'E') rotation = 0
 
     return { transform: `rotateZ(${rotation}deg)` }
   }

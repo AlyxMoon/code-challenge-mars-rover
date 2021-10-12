@@ -1,10 +1,19 @@
 <section class="rover-grid-wrapper">
   <dl>
-    <dt>Width</dt>
+    <dt>Plateau Length X</dt>
     <dd>{{ width }}</dd>
 
-    <dt>Height</dt>
+    <dt>Plateau Length Y</dt>
     <dd>{{ height }}</dd>
+
+    <dt>Rover Position</dt>
+    <dd>{{ rover.position.x }}, {{ rover.position.y }}</dd>
+
+    <dt>Rover Direction</dt>
+    <dd>{{ rover.position.d }}</dd>
+
+    <dt>Rover Instructions</dt>
+    <dd>{{ rover.instructions }}</dd>
   </dl>
 
   <div 
