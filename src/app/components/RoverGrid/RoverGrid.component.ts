@@ -25,7 +25,7 @@ export class RoverGridComponent {
     const { width, height } = this
     const { x, y } = this.rover
 
-    return ((height - x - 1) * width) + y
+    return ((height - y - 1) * width) + x
   }
 
   get roverStyles (): { transform: string } {
