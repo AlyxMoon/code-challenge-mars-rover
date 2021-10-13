@@ -1,4 +1,4 @@
-<form>
+<form (submit)="$event.preventDefault()">
   <label for="form-input-plateau-x">Plateau Length X</label>
   <input
     id="form-input-plateau-x"
@@ -22,4 +22,6 @@
     [value]="height"
     (change)="onHeightChanged($event)"
   />
+
+  <button (click)="begin.emit()">Begin Animation</button>
 </form>

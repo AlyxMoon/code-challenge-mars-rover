@@ -11,6 +11,7 @@ export class RoverGridComponent {
   @Input() width = 10
   @Input() height = 10
   @Input() rover!: Rover
+  @Input() animating = false
 
   get cells (): number[] {
     const cells = Array(this.width * this.height).fill(0)
@@ -54,6 +55,10 @@ export class RoverGridComponent {
 
   get roverClasses (): string[] {
     const classes: string[] = ['rover']
+
+    if (!this.animating) {
+      classes.push('hidden')
+    }
 
     if (this.roverOutOfBounds) {
       classes.push('falling')

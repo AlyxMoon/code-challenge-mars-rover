@@ -11,6 +11,7 @@ export class RoverInputFormComponent {
 
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>()
   @Output() heightChange: EventEmitter<number> = new EventEmitter<number>()
+  @Output() begin: EventEmitter<void> = new EventEmitter<void>()
 
   onWidthChanged (event: Event): void {
     this.widthChange.emit(parseInt((<HTMLInputElement>event.target).value))

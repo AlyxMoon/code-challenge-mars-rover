@@ -3,11 +3,13 @@
   <RoverInputForm
     [(width)]="width"
     [(height)]="height"
+    (begin)="begin()"
   ></RoverInputForm>
 
   <RoverGrid
     [width]="width"
     [height]="height"
     [rover]="rover"
+    [animating]="animating"
   ></RoverGrid>
 </main>

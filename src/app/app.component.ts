@@ -17,6 +17,8 @@ export class AppComponent {
     instructions: 'MMLMMMMMMRMMMMM',
   }
 
+  animating = false
+
   async operateRover (): Promise<void> {
     await waitFor()
 
@@ -42,7 +44,8 @@ export class AppComponent {
     }
   }
 
-  constructor () {
+  begin (): void {
+    this.animating = true
     this.operateRover()
   }
 }
