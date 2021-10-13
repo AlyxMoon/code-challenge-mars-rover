@@ -1,5 +1,20 @@
 # CodeChallengeMarsRover
 
+Live Site: https://alyxmoon.github.io/code-challenge-mars-rover/
+
+### Running Locally
+
+#### Required Tools
+- NodeJS
+- Yarn or NPM
+
+#### Directions For Running Locally
+1. Download the code
+2. Open terminal into the root of the code folder
+3. Run `yarn` or `npm install`
+4. Run `yarn start` or `npm run start`
+5. Open the browser of your choice and navigate to `http://localhost:4200`
+6. Enjoy! 
 
 ## Code Challenge Details
 
