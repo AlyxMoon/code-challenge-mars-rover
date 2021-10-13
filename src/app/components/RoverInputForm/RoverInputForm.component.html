@@ -1,0 +1,25 @@
+<form>
+  <label for="form-input-plateau-x">Plateau Length X</label>
+  <input
+    id="form-input-plateau-x"
+    type="number"
+    required
+    min="0"
+    max="30"
+
+    [value]="width"
+    (change)="onWidthChanged($event)"
+  />
+
+  <label for="form-input-plateau-x">Plateau Length Y</label>
+  <input
+    id="form-input-plateau-y"
+    type="number"
+    required
+    min="0"
+    max="30"
+
+    [value]="height"
+    (change)="onHeightChanged($event)"
+  />
+</form>
