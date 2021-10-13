@@ -23,6 +23,7 @@ export class AppComponent {
   }
   
   animating = false
+  enableMovementSounds = true
 
   @ViewChild('audioMoving') public _audioMoving!: ElementRef
   audioMoving!: HTMLMediaElement
@@ -60,11 +61,11 @@ export class AppComponent {
           instructions: char,
         }, options)
 
-        if (this.audioMoving && char === 'M') {
+        if (this.enableMovementSounds && this.audioMoving && char === 'M') {
           this.audioMoving.play()
         }
 
-        if (this.audioTurning && char !== 'M') {
+        if (this.enableMovementSounds && this.audioTurning && char !== 'M') {
           this.audioTurning.play()
         }
   

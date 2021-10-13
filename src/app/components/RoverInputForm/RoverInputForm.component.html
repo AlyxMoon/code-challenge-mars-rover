@@ -85,7 +85,13 @@
     <option value="2">Preset 2 (test case 2)</option>
     <option value="3">Preset 3 (whoops, fell off the map)</option>
   </select>
-</form>
 
+  <label>Enable Movement Sounds</label>
+  <input 
+    type="checkbox" 
+    [checked]="enableMovementSounds"
+    (change)="onChange($event, 'enableMovementSounds')"
+  />
+</form>
 
 <button (click)="begin.emit()">Begin Animation</button>

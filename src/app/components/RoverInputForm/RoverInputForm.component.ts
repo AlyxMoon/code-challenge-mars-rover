@@ -13,7 +13,8 @@ export class RoverInputFormComponent {
   @Input() roverStartingY = 0
   @Input() roverStartingD = 'N'
   @Input() roverInstructions = 'MLMRM'
-  @Input() selectedPreset = 0
+  @Input() selectedPreset = 1
+  @Input() enableMovementSounds = true
 
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>()
   @Output() heightChange: EventEmitter<number> = new EventEmitter<number>()
@@ -21,6 +22,7 @@ export class RoverInputFormComponent {
   @Output() roverStartingYChange: EventEmitter<number> = new EventEmitter<number>()
   @Output() roverStartingDChange: EventEmitter<string> = new EventEmitter<string>()
   @Output() roverInstructionsChange: EventEmitter<string> = new EventEmitter<string>()
+  @Output() enableMovementSoundsChange: EventEmitter<boolean> = new EventEmitter<boolean>()
   @Output() begin: EventEmitter<void> = new EventEmitter<void>()
 
   onChange (event: Event, property: string): void {
@@ -53,6 +55,10 @@ export class RoverInputFormComponent {
       const validated = /[^MLR]/g.test(value) ? 'MLMRM' : value
       element.value = validated
       return this.roverInstructionsChange.emit(validated)
+    }
+
+    if (property === 'enableMovementSounds') {
+      this.enableMovementSoundsChange.emit(element.checked)
     }
   }
 
