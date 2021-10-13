@@ -79,6 +79,8 @@ export class AppComponent {
         this.audioScream.play()
       }
     }
+
+    this.animating = false
   }
 
   begin (): void {

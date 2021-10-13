@@ -6,3 +6,15 @@
 audio {
   display: none;
 }
+
+body {
+  background-color: #555;
+}
+
+input {
+  background-color: #DDD;
+}
+
+* {
+  box-sizing: border-box;
+}

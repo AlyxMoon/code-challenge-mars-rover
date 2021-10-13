@@ -50,10 +50,6 @@ export class RoverGridComponent {
   get roverClasses (): string[] {
     const classes: string[] = ['rover']
 
-    if (!this.animating) {
-      classes.push('hidden')
-    }
-
     if (this.roverOutOfBounds) {
       classes.push('falling')
     }

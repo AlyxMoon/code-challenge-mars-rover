@@ -1,3 +1,8 @@
+:host {
+  background-color: #DDD;
+  padding: 1rem;
+}
+
 form {
   display: grid;
   justify-content: flex-start;
@@ -8,7 +13,9 @@ form {
   margin: 20px 0;
 
   label {
+    color: black;
     font-weight: bold;
+    text-align: right;
   }
 
   input {

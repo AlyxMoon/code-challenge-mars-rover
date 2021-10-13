@@ -1,24 +1,23 @@
 <section>
-  <dl>
-    <dt>Rover Position</dt>
-    <dd>{{ rover.position.x }}, {{ rover.position.y }}</dd>
-
-    <dt>Rover Direction</dt>
-    <dd>{{ rover.position.d }}</dd>
-
-    <dt>Rover Instructions</dt>
-    <dd>{{ rover.instructions }}</dd>
-  </dl>
-
-  <div 
-    class="rover-grid"
-    [ngStyle]="{ '--cellsPerRow': 20 }"
-  >
-    <div *ngFor="let cell of cells"></div>
+  <div class="rover-grid-wrapper">
+    <dl>
+      <dt>Current Position</dt>
+      <dd>{{ rover.position.x }}, {{ rover.position.y }}</dd>
+  
+      <dt>Current Direction</dt>
+      <dd>{{ rover.position.d }}</dd>
+    </dl>
 
     <div 
-      [ngClass]="roverClasses" 
-      [ngStyle]="roverStyles"
-    >&gt;</div>
+      class="rover-grid"
+      [ngStyle]="{ '--cellsPerRow': 20 }"
+    >
+      <div *ngFor="let cell of cells"></div>
+  
+      <div 
+        [ngClass]="roverClasses" 
+        [ngStyle]="roverStyles"
+      >&gt;</div>
+    </div>
   </div>
 </section>
