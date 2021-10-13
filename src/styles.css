@@ -2,3 +2,7 @@
 .hidden {
   display: none !important;
 }
+
+audio {
+  display: none;
+}

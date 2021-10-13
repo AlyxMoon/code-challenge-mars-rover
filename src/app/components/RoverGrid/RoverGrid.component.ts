@@ -12,6 +12,7 @@ export class RoverGridComponent {
   @Input() height = 10
   @Input() rover!: Rover
   @Input() animating = false
+  @Input() roverOutOfBounds = false
 
   get cells (): number[] {
     const cells = Array(this.width * this.height).fill(0)
@@ -28,13 +29,6 @@ export class RoverGridComponent {
     const { x, y } = this.rover.position
 
     return ((height - y - 1) * width) + x
-  }
-
-  get roverOutOfBounds (): boolean {
-    const { width, height } = this
-    const { x, y } = this.rover.position
-
-    return x < 0 || y < 0 || x >= width || y >= height
   }
 
   get roverStyles (): { [key: string]: string | null } {

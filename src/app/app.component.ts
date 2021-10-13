@@ -1,4 +1,4 @@
-import { Component } from '@angular/core'
+import { Component, ElementRef, ViewChild } from '@angular/core'
 import { Rover } from 'src/typings'
 
 import navigateRover from './utils/navigateRover'
@@ -19,6 +19,26 @@ export class AppComponent {
 
   animating = false
 
+  @ViewChild('audioMoving') public _audioMoving!: ElementRef
+  audioMoving!: HTMLMediaElement
+  @ViewChild('audioTurning') public _audioTurning!: ElementRef
+  audioTurning!: HTMLMediaElement
+  @ViewChild('audioScream') public _audioScream!: ElementRef
+  audioScream!: HTMLMediaElement
+
+  get roverOutOfBounds (): boolean {
+    const { width, height } = this
+    const { x, y } = this.rover.position
+
+    return x < 0 || y < 0 || x >= width || y >= height
+  }
+
+  ngAfterViewInit () {
+    this.audioMoving = this._audioMoving.nativeElement
+    this.audioTurning = this._audioTurning.nativeElement
+    this.audioScream = this._audioScream.nativeElement
+  }
+
   async operateRover (): Promise<void> {
     await waitFor()
 
@@ -34,6 +54,14 @@ export class AppComponent {
           position: this.rover.position,
           instructions: char,
         }, options)
+
+        if (this.audioMoving && char === 'M') {
+          this.audioMoving.play()
+        }
+
+        if (this.audioTurning && char !== 'M') {
+          this.audioTurning.play()
+        }
   
         await waitFor()
       }
@@ -41,6 +69,10 @@ export class AppComponent {
       const error = err as Error
 
       console.log(error.message)
+
+      if (this.audioScream && this.roverOutOfBounds) {
+        this.audioScream.play()
+      }
     }
   }
 

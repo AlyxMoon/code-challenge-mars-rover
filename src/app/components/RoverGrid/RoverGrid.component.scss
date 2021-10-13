@@ -52,7 +52,7 @@ dl {
     transition: top 0.9s, left 0.9s;
 
     &.falling {
-      animation: falling 5s;
+      animation: falling 5s 500ms;
       animation-fill-mode: forwards;
     }
   }
