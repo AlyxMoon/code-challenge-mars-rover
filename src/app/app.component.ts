@@ -1,5 +1,5 @@
 import { Component, ElementRef, ViewChild } from '@angular/core'
-import { Rover } from 'src/typings'
+import { Rover, RoverDirection } from 'src/typings'
 
 import navigateRover from './utils/navigateRover'
 import waitFor from './utils/waitFor'
@@ -12,11 +12,16 @@ import waitFor from './utils/waitFor'
 export class AppComponent {
   width = 20
   height = 20
-  rover: Rover = {
-    position: { x: 2, y: 0, d: 'N' },
-    instructions: 'MMLMMMMMMRMMMMM',
-  }
+  roverStartingX = 5
+  roverStartingY = 5
+  roverStartingD = 'N'
+  roverInstructions = 'MLMRM'
 
+  rover: Rover = {
+    position: { x: 5, y: 5, d: 'N' },
+    instructions: 'MLMRM',
+  }
+  
   animating = false
 
   @ViewChild('audioMoving') public _audioMoving!: ElementRef
@@ -77,6 +82,11 @@ export class AppComponent {
   }
 
   begin (): void {
+    this.rover.position.x = this.roverStartingX
+    this.rover.position.y = this.roverStartingY
+    this.rover.position.d = this.roverStartingD as RoverDirection
+    this.rover.instructions = this.roverInstructions
+    
     this.animating = true
     this.operateRover()
   }

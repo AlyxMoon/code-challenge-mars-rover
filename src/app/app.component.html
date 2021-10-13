@@ -1,8 +1,13 @@
 
 <main class="content" role="main">
   <RoverInputForm
+    [animating]="animating"
     [(width)]="width"
     [(height)]="height"
+    [(roverStartingX)]="roverStartingX"
+    [(roverStartingY)]="roverStartingY"
+    [(roverStartingD)]="roverStartingD"
+    [(roverInstructions)]="roverInstructions"
     (begin)="begin()"
   ></RoverInputForm>
 

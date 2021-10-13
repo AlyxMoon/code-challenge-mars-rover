@@ -1,0 +1,23 @@
+form {
+  display: grid;
+  justify-content: flex-start;
+  align-items: center;
+  grid-template-columns: auto auto;
+  gap: 0.5em 1em;
+
+  margin: 20px 0;
+
+  label {
+    font-weight: bold;
+  }
+
+  input {
+    padding: 0.3em 0.6em;
+    min-width: 150px;
+
+    border: 1px solid black;
+    border-radius: 4px;
+
+    font-size: 1.1rem;
+  }
+}

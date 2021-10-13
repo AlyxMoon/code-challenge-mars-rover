@@ -8,10 +8,11 @@
     max="30"
 
     [value]="width"
-    (change)="onWidthChanged($event)"
+    (change)="onChange($event, 'width')"
+    [disabled]="animating"
   />
 
-  <label for="form-input-plateau-x">Plateau Length Y</label>
+  <label for="form-input-plateau-y">Plateau Length Y</label>
   <input
     id="form-input-plateau-y"
     type="number"
@@ -20,8 +21,58 @@
     max="30"
 
     [value]="height"
-    (change)="onHeightChanged($event)"
+    (change)="onChange($event, 'height')"
+    [disabled]="animating"
   />
 
-  <button (click)="begin.emit()">Begin Animation</button>
+  <label for="form-input-rover-x">Rover Starting X</label>
+  <input
+    id="form-input-rover-X"
+    type="number"
+    required
+    min="0"
+    max="30"
+
+    [value]="roverStartingX"
+    (change)="onChange($event, 'roverStartingX')"
+    [disabled]="animating"
+  />
+
+  <label for="form-input-rover-y">Rover Starting Y</label>
+  <input
+    id="form-input-rover-y"
+    type="number"
+    required
+    min="0"
+    max="30"
+
+    [value]="roverStartingY"
+    (change)="onChange($event, 'roverStartingY')"
+    [disabled]="animating"
+  />
+
+  <label for="form-input-rover-d">Rover Starting Direction (N,E,S,W)</label>
+  <input
+    id="form-input-rover-d"
+    type="text"
+    required
+
+    [value]="roverStartingD"
+    (change)="onChange($event, 'roverStartingD')"
+    [disabled]="animating"
+  />
+
+  <label for="form-input-rover-d">Rover Instructions</label>
+  <input
+    id="form-input-rover-instructions"
+    type="text"
+    required
+
+    [value]="roverInstructions"
+    (change)="onChange($event, 'roverInstructions')"
+    [disabled]="animating"
+  />
+
 </form>
+
+<button (click)="begin.emit()">Begin Animation</button>
