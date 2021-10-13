@@ -29,7 +29,14 @@ export class RoverGridComponent {
     return ((height - y - 1) * width) + x
   }
 
-  get roverStyles (): { [key: string]: string } {
+  get roverOutOfBounds (): boolean {
+    const { width, height } = this
+    const { x, y } = this.rover.position
+
+    return x < 0 || y < 0 || x >= width || y >= height
+  }
+
+  get roverStyles (): { [key: string]: string | null } {
     if (!this.rover) return { transform: 'none' }
 
     let rotation = 0
@@ -39,10 +46,20 @@ export class RoverGridComponent {
     if (this.rover.position.d === 'E') rotation = 0
 
     return { 
-      transform: `rotateZ(${rotation}deg)`,
-      top: `calc((var(--cellSize) + 1px) * ${this.height - this.rover.position.y})`,
+      transform: this.roverOutOfBounds ? null : `rotateZ(${rotation}deg)`,
+      top: `calc((var(--cellSize) + 1px) * ${this.height - this.rover.position.y - 1})`,
       left: `calc((var(--cellSize) + 1px) * ${this.rover.position.x})`,
     }
+  }
+
+  get roverClasses (): string[] {
+    const classes: string[] = ['rover']
+
+    if (this.roverOutOfBounds) {
+      classes.push('falling')
+    }
+
+    return classes
   }
 
   @HostBinding('attr.style')

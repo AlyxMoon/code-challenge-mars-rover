@@ -50,5 +50,20 @@ dl {
     font-weight: bold;
   
     transition: top 0.9s, left 0.9s;
+
+    &.falling {
+      animation: falling 5s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@keyframes falling {
+  0% {
+    transform: scale(1) rotateZ(0deg);
+  } 
+  
+  100% {
+    transform: scale(0) rotateZ(1800deg);
   }
 }

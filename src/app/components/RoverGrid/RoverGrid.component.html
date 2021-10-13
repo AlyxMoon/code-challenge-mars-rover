@@ -21,6 +21,10 @@
     [ngStyle]="{ '--cellsPerRow': 20 }"
   >
     <div *ngFor="let cell of cells"></div>
-    <div class="rover" [ngStyle]="roverStyles">&gt;</div>
+
+    <div 
+      [ngClass]="roverClasses" 
+      [ngStyle]="roverStyles"
+    >&gt;</div>
   </div>
 </section>
