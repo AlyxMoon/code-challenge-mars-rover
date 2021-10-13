@@ -2,6 +2,10 @@
 
 Live Site: https://alyxmoon.github.io/code-challenge-mars-rover/
 
+For the most relevant code parts, the solution to the question, check out the files in `src/app/utils`.  
+The `parseInputData.ts` file takes the raw text input and processes it into variables that are easier to handle in the program. In addition, it does various validations on the input.  
+The `navigateRover.ts` file takes the processed input and returns the solution for an individual rover.
+
 ### Running Locally
 
 #### Required Tools
