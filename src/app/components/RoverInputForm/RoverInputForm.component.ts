@@ -13,7 +13,7 @@ export class RoverInputFormComponent {
   @Input() roverStartingY = 0
   @Input() roverStartingD = 'N'
   @Input() roverInstructions = 'MLMRM'
-  @Input() selectedPreset = 1
+  @Input() selectedPreset = 0
   @Input() enableMovementSounds = true
 
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>()

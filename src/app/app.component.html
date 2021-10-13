@@ -1,16 +1,20 @@
 
 <main class="content" role="main">
-  <RoverInputForm
-    [animating]="animating"
-    [(width)]="width"
-    [(height)]="height"
-    [(roverStartingX)]="roverStartingX"
-    [(roverStartingY)]="roverStartingY"
-    [(roverStartingD)]="roverStartingD"
-    [(roverInstructions)]="roverInstructions"
-    [(enableMovementSounds)]="enableMovementSounds"
-    (begin)="begin()"
-  ></RoverInputForm>
+  <div class="col-1">
+    <RoverProblemEntry></RoverProblemEntry>
+
+    <RoverInputForm
+      [animating]="animating"
+      [(width)]="width"
+      [(height)]="height"
+      [(roverStartingX)]="roverStartingX"
+      [(roverStartingY)]="roverStartingY"
+      [(roverStartingD)]="roverStartingD"
+      [(roverInstructions)]="roverInstructions"
+      [(enableMovementSounds)]="enableMovementSounds"
+      (begin)="begin()"
+    ></RoverInputForm>
+  </div>
 
   <RoverGrid
     [width]="width"

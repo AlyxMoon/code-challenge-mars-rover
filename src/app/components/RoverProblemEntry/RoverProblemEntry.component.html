@@ -1,0 +1,9 @@
+<p>Don't feel like watching the animation? Enter the problem directly here.</p>
+
+<form (submit)="$event.preventDefault()">
+  <textarea cols="10" [value]="userInput" (change)="onChange($event)"></textarea>
+
+  <button (click)="solve()">Submit</button>
+
+  <textarea [value]="solutionOutput" readonly></textarea>
+</form>
