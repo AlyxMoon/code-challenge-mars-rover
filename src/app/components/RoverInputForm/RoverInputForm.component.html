@@ -73,6 +73,19 @@
     [disabled]="animating"
   />
 
+  <label for="form-input-presets">Select Preset (optional)</label>
+  <select
+    id="form-input-presets"
+    [value]="selectedPreset"
+    (change)="activatePreset($event)"
+    [disabled]="animating"
+  >
+    <option value="0">----</option>
+    <option value="1">Preset 1 (test case 1)</option>
+    <option value="2">Preset 2 (test case 2)</option>
+    <option value="3">Preset 3 (whoops, fell off the map)</option>
+  </select>
 </form>
+
 
 <button (click)="begin.emit()">Begin Animation</button>

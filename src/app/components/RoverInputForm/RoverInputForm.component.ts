@@ -13,6 +13,7 @@ export class RoverInputFormComponent {
   @Input() roverStartingY = 0
   @Input() roverStartingD = 'N'
   @Input() roverInstructions = 'MLMRM'
+  @Input() selectedPreset = 0
 
   @Output() widthChange: EventEmitter<number> = new EventEmitter<number>()
   @Output() heightChange: EventEmitter<number> = new EventEmitter<number>()
@@ -25,6 +26,8 @@ export class RoverInputFormComponent {
   onChange (event: Event, property: string): void {
     const element = <HTMLInputElement>event.target
     const value = element.value
+
+    this.selectedPreset = 0
 
     const numProperties = ['width', 'height', 'roverStartingX', 'roverStartingY']
 
@@ -50,6 +53,36 @@ export class RoverInputFormComponent {
       const validated = /[^MLR]/g.test(value) ? 'MLMRM' : value
       element.value = validated
       return this.roverInstructionsChange.emit(validated)
+    }
+  }
+
+  activatePreset (event: Event): void {
+    const element = <HTMLInputElement>event.target
+    
+    switch (element.value) {
+      case '1':
+        this.widthChange.emit(6)
+        this.heightChange.emit(6)
+        this.roverStartingXChange.emit(1)
+        this.roverStartingYChange.emit(2)
+        this.roverStartingDChange.emit('N')
+        this.roverInstructionsChange.emit('LMLMLMLMM')
+        break
+      case '2':
+        this.widthChange.emit(6)
+        this.heightChange.emit(6)
+        this.roverStartingXChange.emit(3)
+        this.roverStartingYChange.emit(3)
+        this.roverStartingDChange.emit('E')
+        this.roverInstructionsChange.emit('MMRMMRMRRM')
+        break
+      case '3':
+        this.widthChange.emit(6)
+        this.heightChange.emit(6)
+        this.roverStartingXChange.emit(1)
+        this.roverStartingYChange.emit(1)
+        this.roverStartingDChange.emit('N')
+        this.roverInstructionsChange.emit('MLMM')
     }
   }
 }
